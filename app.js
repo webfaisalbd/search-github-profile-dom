@@ -53,7 +53,14 @@ function createUserCard(user) {
 
             <div id="repositoryId"></div>
 
+            <button onclick="againSubmit()" id="againSubmit" class="againSubmit">Again Search</button>
+                
+            
+
             </div>
+
+            
+            
         </div>
 
         `
@@ -102,3 +109,9 @@ form.addEventListener('submit', (e) => {
     }
 
 })
+
+
+// again Submit
+function againSubmit(){
+    main.innerHTML = '';
+}
