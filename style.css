@@ -112,6 +112,11 @@ body{
     
 }
 
+.againSubmit:hover{
+    background-color: aqua;
+    color: #212a72;
+}
+
 @media (max-width: 500px) {
      .card {
         flex-direction: column;
