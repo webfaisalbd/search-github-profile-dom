@@ -4,12 +4,14 @@ const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 
+
+// load profile data 
 async function getUser(username) {
     try {
         const { data } = await axios(APIURL + username);
         // console.log('first data: ',data);
         createUserCard(data)
-        
+        getRepos(username)
     }
     catch (err) {
         if (err.response.status = 400) {
@@ -19,8 +21,20 @@ async function getUser(username) {
 }
 
 
+// load repository data
+async function getRepos(username) {
+    try {
+        const { data } = await axios(APIURL + username + '/repos?sort=created');
+        // console.log('second data: ',data);
+        addRepoToCard(data)
+    }
+    catch (err) {
+        createErrorCard('Problem is fetching in repos')
+    }
+}
 
 
+// show profile data 
 function createUserCard(user) {
     const cardHTML = `
         <div class='card'>
@@ -58,8 +72,24 @@ function createErrorCard(msg) {
 }
 
 
+// show repository data 
+function addRepoToCard(repos) {
+    const reposE1 = document.getElementById('repositoryId');
 
+    repos.slice(0, 10).forEach(repo => {
+            const repoE1 = document.createElement('a');
+            repoE1.classList.add('repo');
+            repoE1.href = repo.html_url;
+            repoE1.target = '_black';
+            repoE1.innerText = repo.name;
 
+            reposE1.appendChild(repoE1)
+
+        })
+
+}
+
+// enter the search box 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
