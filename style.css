@@ -100,7 +100,17 @@ body{
 }
 
 
-
+.againSubmit {
+    margin-top: 1rem;
+    font-size: larger;
+    color: white;
+    background-color: skyblue;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
 
 @media (max-width: 500px) {
      .card {
